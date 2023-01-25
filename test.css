@@ -1,0 +1,13 @@
+.toBold {
+    font-weight: bold;
+}
+
+.toCollapse {
+
+height: 0;
+display: none;
+}
+
+button {
+    font-size: 120pt;
+}

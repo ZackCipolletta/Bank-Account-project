@@ -1,59 +1,5 @@
 // // Business logic
 
-// function Account(x, y) {
-//     let variable1 = x;
-//     let variable2 = y;
-// }
-
-
-// It will: Assign two variables  
-// Code: 
-// Expected output: Name: , Initial deposit: 
-
-// const userName = "Joseph Morrissey";
-// const initialDeposit = 1000;
-
-// It will: Make a constructor that will create an account object
-// Code: 
-// Expected output: object
-
-
-// const testName = "Joseph Morrissey";
-// const testDeposit = 1000;
-
-// function Account(userName, initialDeposit) {
-//     this.userName = userName;
-//     this.initialDeposit = initialDeposit;
-// }
-
-
-
-
-
-// It will: create a bank database
-// Code: 
-// Expected output: {}
-
-
-// const testName = "Joseph Morrissey";
-// const testDeposit = 1000;
-
-// function Account(userName, initialDeposit) {
-//     this.userName = userName;
-//     this.initialDeposit = initialDeposit;
-// }
-
-// function BankDB() {
-//     this.accounts = {};
-//     this.currentID = 0;
-// }
-
-
-
-// It will: add accounts to bank database
-// Code: 
-// Expected output: {accountX, accountY}
-
 const testName = "Joseph Morrissey";
 const testDeposit = 1000;
 
@@ -103,9 +49,8 @@ function Account(userName, initialDeposit) {
 }
 
 Account.prototype.depositBalance = function(deposit) {
-    this.initialDeposit = this.initialDeposit + deposit;
+    this.initialDeposit = parseInt(this.initialDeposit) + parseInt(deposit);
     this.createRunningTotal();
-    return this.initialDeposit;
 }
 
 Account.prototype.createRunningTotal = function() {
@@ -127,12 +72,117 @@ Account.prototype.withdrawBalance = function(withdraw) {
 
 
 // UI logic
+////////////////////////////////////
+//declare global values and add array
+const bankDB = new BankDB();
+const custIds = [];
 
+//on load choose log in type
 
-window.addEventListener('load', function(){
-    document.getElementById('submit').addEventListener('submit');
-    document.getElementById('reset').addEventListener('click');
+window.addEventListener('load', function() {
+    document.getElementById('radioForm').addEventListener('submit', function(e){
+        e.preventDefault(e);
+        chooseLoginType();
+        document.getElementById('form').addEventListener('submit', function(e){
+            e.preventDefault();
+            initialSubmit();
+
+            // unhideManip();
+        });
+    });
 });
+
+//on click of the submit, target the value of initialDeposit/runningTotal, and assign this to span
+
+function updateAccount(id) {
+    let accountValue = bankDB.accounts[id].initialDeposit;
+    document.getElementById("bankAccountValue").innerText = accountValue;
+    console.log('Account total is: ' + accountValue);
+}
+
+//user submits new account
+function initialSubmit(){
+
+    const userArray = userInput();    
+    const newAccount = new Account(userArray[0],userArray[1])
+    bankDB.addAccount(newAccount);
+
+    document.getElementById('hidden').removeAttribute('class');
+
+    document.getElementById('deposit').addEventListener('submit', function(){
+            let userDeposit = document.getElementById('depositInput').value;
+            bankDB.accounts[1].depositBalance(userDeposit);
+    });
+    let newCustId = bankDB.currentID;
+    updateAccount(newCustId); 
+}
+    
+
+function userInput(){
+    let inputUserName = document.getElementById('userName').value;
+    let inputInitialDeposit = document.getElementById('userInitialDeposit').value;
+    let userInfoArr = [inputUserName, inputInitialDeposit];
+
+    return userInfoArr;
+}
+
+//choose log in type
+function chooseLoginType() {
+    let loginType = document.querySelector("input[name='typeOFCustomer']:checked").value;
+    if(loginType === '1'){
+        console.log("newcustomer");
+        document.getElementById('form').removeAttribute("class");
+        let testVar = document.getElementById('hiddenMaster').getAttribute("class");
+        if (testVar === "hiddenMaster") {
+        } else {
+            document.getElementById("hiddenMaster").setAttribute("class", "hiddenMaster");
+        }
+    } else {
+        console.log('existing customer');
+        document.getElementById('hiddenMaster').removeAttribute("class");
+        let testVar = document.getElementById('form').removeAttribute("class");
+        if (testVar === "form") {
+        } else {
+            document.getElementById("form").setAttribute("class", "hiddenMaster");
+        }
+    }
+}
+
+    // document.getElementById('deposit').addEventListener('submit', function(e){
+    //     e.preventDefault();
+    // });
+    // document.getElementById('withdraw').addEventListener('click', function(e){
+    //     e.preventDefault();
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//document.getElementById('form').addEventListener('submit', function(e){
+    //     e.preventDefault();
+        
+    //     if(document.getElementById("user-login").value) {
+
+    //     } else {
+    //         initialSubmit();
+    //         populateDropdown();
+    //     };
+
+    // });
 
 
 

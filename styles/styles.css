@@ -57,5 +57,17 @@ body {
 }
 
 .firstForm {
-    display: block;
+    display: none;
+}
+
+.deposit {
+    margin-top: 20px;
+}
+
+.dropdown-content {
+    display: inline;
+}
+
+.hiddenMaster {
+    display: none;
 }

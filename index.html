@@ -10,34 +10,48 @@
 </head>
 <body>
     <div class="outerdiv"><div class="innerdiv">
-        <p>Hello user to the ezPZ casino <span class="bank">BANK</span> Please make an account:</p>
-        <form class="firstForm">
+        <p>Hello user to the ezPZ casino <span class="bank">BANK</span> Please make an account or log:</p>
+        <form class="newOrExistingCustomer" id="radioForm">
+            <fieldset>
+            <input type="radio" id="new" name="typeOFCustomer" value= '1' />
+                <label for="new">New</label>
+            <input type="radio" id="existing" name="typeOFCustomer" value="0" />
+                <label for="existing">Existing</label>
+                <button type="submit" id="radioButtonSubmit">Submit</button>
+            </fieldset>
+            </form>
+        <form class="firstForm" id="form">
             <div class="spacer">
-            <label for="userName">User Name:</label>
-            <input type="text" name="userName" id="userName"></div>
+                <label for="userName">User Name:</label>
+                <input type="text" name="userName" id="userName">
+            </div>
             <div class="spacer2">
-            <label for="userInitialDeposit">Initial Deposit</label>
-            <input type="text" name="userInitialDeposit" id="userInitialDeposit">
-        </div>
+                <label for="userInitialDeposit">Initial Deposit</label>
+                <input type="number" name="userInitialDeposit" id="userInitialDeposit">
+                <button type="submit" id="submit" class="startingButtons">Submit</button>
+                <button type="reset" id="submit" class="startingButtons">Reset</button>
+            </div>
             <br>
-            <button type="submit" id="submit" class="startingButtons">Submit</button>
-            <button type="reset"class="startingButtons">Reset</button>
         </form>
-        <div class="hidden">Account value: <span></span></div>
-        <div class="deposit hidden2"><p>MAKE A DEPOSIT:</p>
-            <form>
-                <label for="depositInput">$</label>
-                <input type="number" name="depositInput" id="depositInput">
-                <button type="submit" id="deposit">DEPOSIT!</button>
-            </form>
-        </div>
-        <div class="withdraw hidden2">
-                <p class="withdraw">withdrawal?:</p>
-            <form>
-                <label for="withdrawInput">$</label>
-                <input type="number" name="withdrawInput" id="withdrawalInput">
-                <button type="submit">submit</button>
-            </form>
+        <div id="hidden" class="hidden">Account value: <span id="bankAccountValue"></span></div>
+
+
+        <div class="hiddenMaster" id="hiddenMaster">
+            <div class="deposit"><p>MAKE A DEPOSIT:</p>
+                <form id="deposit">
+                    <label for="depositInput">$</label>
+                    <input type="number" name="depositInput" id="depositInput">
+                    <button type="submit" id="deposit">DEPOSIT!</button>
+                </form>
+            </div>
+            <div class="withdraw">
+                    <p id='withdraw'class="withdraw">withdrawal?:</p>
+                <form>
+                    <label for="withdrawInput">$</label>
+                    <input type="number" name="withdrawInput" id="withdrawalInput">
+                    <button type="submit">submit</button>
+                </form>
+            </div>
         </div>
     </div></div>
 </body>
