@@ -93,7 +93,6 @@ window.addEventListener('load', function() {
 });
 
 //on click of the submit, target the value of initialDeposit/runningTotal, and assign this to span
-
 function updateAccount(id) {
     let accountValue = bankDB.accounts[id].initialDeposit;
     document.getElementById("bankAccountValue").innerText = accountValue;
@@ -102,13 +101,10 @@ function updateAccount(id) {
 
 //user submits new account
 function initialSubmit(){
-
-    const userArray = userInput();    
+    const userArray = userInput(); // Calls userInput() and stores return value in variable    
     const newAccount = new Account(userArray[0],userArray[1])
     bankDB.addAccount(newAccount);
-
     document.getElementById('hidden').removeAttribute('class');
-
     document.getElementById('deposit').addEventListener('submit', function(){
             let userDeposit = document.getElementById('depositInput').value;
             bankDB.accounts[1].depositBalance(userDeposit);
@@ -117,25 +113,29 @@ function initialSubmit(){
     updateAccount(newCustId); 
     unHideMaster();
 }
-    
-function unHideMaster() {
+
+    // Show the deposit and withdraw options and input fields when called.
+function unHideMaster() { 
     document.getElementById('hiddenMaster').removeAttribute('class');
 }
 
-
-function userInput(){
+// gathers the name and initail deposit amounts from New users
+function userInput(){ 
     let inputUserName = document.getElementById('userName').value;
     let inputInitialDeposit = document.getElementById('userInitialDeposit').value;
     let userInfoArr = [inputUserName, inputInitialDeposit];
-
     return userInfoArr;
+}
+
+function depositFunc(){
+    const depositAmount = document.getElementById('depositInput').value;
+    console.log('deposit amount: ' + depositAmount);
 }
 
 //choose log in type
 function chooseLoginType() {
     let loginType = document.querySelector("input[name='typeOFCustomer']:checked").value;
     if(loginType === '1'){
-        console.log("newcustomer");
         document.getElementById('form').removeAttribute("class");
         let testVar = document.getElementById('hiddenMaster').getAttribute("class");
         if (testVar === "hiddenMaster") {
@@ -143,7 +143,6 @@ function chooseLoginType() {
             document.getElementById("hiddenMaster").setAttribute("class", "hiddenMaster");
         }
     } else {
-        console.log('existing customer');
         document.getElementById('hiddenMaster').removeAttribute("class");
         let testVar = document.getElementById('form').removeAttribute("class");
         if (testVar === "form") {
@@ -151,44 +150,13 @@ function chooseLoginType() {
             document.getElementById("form").setAttribute("class", "hiddenMaster");
         }
     }
+    document.getElementById('deposit').addEventListener('submit', function(e){
+        e.preventDefault();
+        depositFunc();
+    });
+    document.getElementById('withdraw').addEventListener('submit', function(e){
+        e.preventDefault();
+        withdrawFunc();
+    });
+
 }
-
-    // document.getElementById('deposit').addEventListener('submit', function(e){
-    //     e.preventDefault();
-    // });
-    // document.getElementById('withdraw').addEventListener('click', function(e){
-    //     e.preventDefault();
-    // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//document.getElementById('form').addEventListener('submit', function(e){
-    //     e.preventDefault();
-        
-    //     if(document.getElementById("user-login").value) {
-
-    //     } else {
-    //         initialSubmit();
-    //         populateDropdown();
-    //     };
-
-    // });
-
-
-
-
