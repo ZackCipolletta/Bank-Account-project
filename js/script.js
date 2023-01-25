@@ -48,9 +48,13 @@ function Account(userName, initialDeposit) {
     this.initialDeposit = initialDeposit;
 }
 
-Account.prototype.depositBalance = function(deposit) {
+Account.prototype.firstDeposit = function(deposit) {
     this.initialDeposit = parseInt(this.initialDeposit) + parseInt(deposit);
     this.createRunningTotal();
+}
+
+Account.prototype.depositBalance = function(deposit) {
+    this.runningTotal = parseInt(this.runningTotal) + parseInt(deposit);
 }
 
 Account.prototype.createRunningTotal = function() {
@@ -67,8 +71,15 @@ Account.prototype.createRunningTotal = function() {
 Account.prototype.withdrawBalance = function(withdraw) {
     this.initialDeposit = this.initialDeposit - withdraw;
     this.createRunningTotal();
-    return this.initialDeposit;
 }
+
+Account.prototype.depositBalance = function(deposit) {
+    this.runningTotal = parseInt(this.runningTotal) + parseInt(deposit);
+}
+// Account.prototype.withdrawBalance = function(withdraw) {
+//     this.initialDeposit = this.initialDeposit - withdraw;
+//     this.createRunningTotal();
+// }
 
 
 // UI logic
@@ -107,7 +118,7 @@ function initialSubmit(){
     document.getElementById('hidden').removeAttribute('class');
     document.getElementById('deposit').addEventListener('submit', function(){
             let userDeposit = document.getElementById('depositInput').value;
-            bankDB.accounts[1].depositBalance(userDeposit);
+            bankDB.accounts[1].firstDeposit(userDeposit);
     });
     let newCustId = bankDB.currentID;
     updateAccount(newCustId); 
@@ -130,6 +141,13 @@ function userInput(){
 function depositFunc(){
     const depositAmount = document.getElementById('depositInput').value;
     console.log('deposit amount: ' + depositAmount);
+    bankDB.accounts[1].depositBalance(depositAmount);
+}
+
+function withdrawFunc(){
+    const withdrawAmount = document.getElementById('withdrawalInput').value;
+    console.log('withdraw amount: ' + withdrawAmount);
+    bankDB.accounts[1].withdrawBalance(withdrawAmount);
 }
 
 //choose log in type
