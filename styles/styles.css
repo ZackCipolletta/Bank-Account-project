@@ -8,7 +8,7 @@
 
 body {
     background-color: #cdd194;
-    background-image: url(/lemonade.jpg);
+    background-image: url(/images/lemonade.jpg);
     background-size: 200px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 16pt;
@@ -28,7 +28,7 @@ body {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-image: url(/pixel-art-cartoon-cute-magical-black-cat-character-retro-vintage-80s-90s-slot-machine-video-game-graphics-2HD856B.jpeg), url(/pixel-art-slot-machine-betting-machine-vector-icon-8bit-game-white-background_360488-592.webp), url(/4787c204bd56e994a7ff8a1197d67940d0e0b3ef.png), url(/d121bf27220406542b9f322a949c487f3178e1a7.jpeg);
+    background-image: url(/images/pixel-art-cartoon-cat), url(/images/pixel-art-slot-machine);
     background-repeat: no-repeat; 
     background-position: left top, right top, left bottom, right bottom;
     background-size: 400px, 400px, 200px, 200px;
