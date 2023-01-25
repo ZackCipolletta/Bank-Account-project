@@ -110,6 +110,14 @@ function updateAccount(id) {
     console.log('Account total is: ' + accountValue);
 }
 
+function updateAccount2(id) {
+    let boobs = bankDB.accounts[id].runningTotal;
+
+    console.log('updateAccount2 thinks total is: ' + boobs)
+    document.getElementById("bankAccountValue").innerText = accountValue;
+    console.log('Account total is: ' + accountValue);
+}
+
 //user submits new account
 function initialSubmit(){
     const userArray = userInput(); // Calls userInput() and stores return value in variable    
@@ -142,6 +150,8 @@ function depositFunc(){
     const depositAmount = document.getElementById('depositInput').value;
     console.log('deposit amount: ' + depositAmount);
     bankDB.accounts[1].depositBalance(depositAmount);
+    const custID = parseInt(bankDB.currentID);
+    updateAccount2(custID);
 }
 
 function withdrawFunc(){
