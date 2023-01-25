@@ -115,8 +115,13 @@ function initialSubmit(){
     });
     let newCustId = bankDB.currentID;
     updateAccount(newCustId); 
+    unHideMaster();
 }
     
+function unHideMaster() {
+    document.getElementById('hiddenMaster').removeAttribute('class');
+}
+
 
 function userInput(){
     let inputUserName = document.getElementById('userName').value;
