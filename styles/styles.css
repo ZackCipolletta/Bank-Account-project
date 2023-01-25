@@ -8,7 +8,7 @@
 
 body {
     background-color: #cdd194;
-    background-image: url(/images/lemonade.jpg);
+    background-image: url(/lemonade.jpg);
     background-size: 200px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 16pt;
@@ -28,7 +28,8 @@ body {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-image: url(/images/pixel-art-cartoon-cat), url(/images/pixel-art-slot-machine);
+    background-image: url(/images/pixel-art-cartoon-cat), url(/images/pixel-art-slot-machine), url(/images/red-banner.png), url(/images/brick-banner.png
+    );
     background-repeat: no-repeat; 
     background-position: left top, right top, left bottom, right bottom;
     background-size: 400px, 400px, 200px, 200px;
